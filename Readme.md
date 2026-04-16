@@ -39,3 +39,39 @@ Now run the select query to check the user table
 SELECT * FROM users;
 ```
 ### Setup for PostgreSQL 
+First install postgreSQL adapter for python known as pyscopg2 or psycopg2-binary using the following command
+```
+pip install psycopg2
+``` 
+After successful installation, use the following command to connect with your PostgreSQL database already setup and running using pgadmin4 or postgreSQL CLI, with username as postgres, password as admin and database name as postgres running at default port 5432 
+```
+%sql postgresql://postgres:admin@localhost/postgres
+```  
+Once its successfully connected use the following code in the jupyter notebook cell to create a table in it. 
+```
+%%sql
+CREATE TABLE categories (
+  category_id SERIAL NOT NULL PRIMARY KEY,
+  category_name VARCHAR(255),
+  description VARCHAR(255)
+);
+```
+Now insert some dummy data in the table categories you have created above 
+```
+%%sql 
+INSERT INTO categories (category_name, description)
+VALUES
+  ('Beverages', 'Soft drinks, coffees, teas, beers, and ales'),
+  ('Condiments', 'Sweet and savory sauces, relishes, spreads, and seasonings'),
+  ('Confections', 'Desserts, candies, and sweet breads'),
+  ('Dairy Products', 'Cheeses'),
+  ('Grains/Cereals', 'Breads, crackers, pasta, and cereal'),
+  ('Meat/Poultry', 'Prepared meats'),
+  ('Produce', 'Dried fruit and bean curd'),
+  ('Seafood', 'Seaweed and fish');
+``` 
+Now run the select query to get all the rows from your table
+```
+%%sql
+SELECT * FROM categories;
+```
