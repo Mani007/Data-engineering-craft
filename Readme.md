@@ -74,4 +74,10 @@ Now run the select query to get all the rows from your table
 ```
 %%sql
 SELECT * FROM categories;
+```  
+Creating pandas Dataframe from the postgreSQL table
+```
+result = %sql SELECT * FROM categories; 
+df = result.DataFrame()
+print(df)
 ```
